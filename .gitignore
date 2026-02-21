@@ -1,0 +1,44 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# 本地环境
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+/logs/
+
+# 评测数据集（可能较大，不提交）
+/datasets/
+*.zip
+*.tar.gz
+*.bag
+
+# 临时结果
+/results/
+/temp/
+
+# 模型权重（如果需要）
+/models/
+*.pt
+*.pth
+*.bin
+*.onnx
