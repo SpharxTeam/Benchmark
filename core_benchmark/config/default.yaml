@@ -1,0 +1,42 @@
+# Copyright (c) 2026 SPHARX. All Rights Reserved. "From data intelligence emerges".
+# =============================================================================
+# Benchmark 默认配置 — v1.0
+# =============================================================================
+# 本文件定义 Benchmark 库的默认配置。用户可通过自定义 YAML 文件覆盖任意字段
+# (深度合并:用户配置中的字段覆盖默认值,未指定的字段保留默认值)。
+#
+# 配置加载顺序:
+#   1. 加载本文件 (default.yaml) 作为基线
+#   2. 若提供用户配置路径,深度合并用户配置到基线
+#   3. 通过 pydantic 模型校验最终配置
+# =============================================================================
+
+# --- 基准执行参数 ---
+benchmark:
+  iterations: 100          # 正式迭代次数
+  warmup: 5                # 预热迭代次数(不记录度量)
+  parallel: false          # 是否并行执行多算法基准
+  max_workers: null        # 并行最大线程数(null = 自动,基于 CPU 核数)
+
+# --- 度量收集器配置 ---
+metrics:
+  latency:
+    unit: ns               # 延迟单位:ns(纳秒)/ us / ms / s
+  throughput:
+    window_size: 100       # 滑动窗口大小(样本数)
+  memory:
+    enabled: true          # 是否默认启用内存度量
+  accuracy:
+    enabled: false         # 是否默认启用准确度度量(需提供 ground_truth)
+
+# --- 报告生成配置 ---
+reporting:
+  output_dir: ./produce/reports      # 报告输出目录
+  default_format: json               # 默认报告格式:json / csv / markdown
+  include_metadata: true             # 报告是否包含元数据
+  timestamp_format: "%Y%m%d_%H%M%S"  # 输出文件名时间戳格式
+
+# --- 日志配置 ---
+logging:
+  level: INFO             # 日志级别:DEBUG / INFO / WARNING / ERROR / CRITICAL
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
